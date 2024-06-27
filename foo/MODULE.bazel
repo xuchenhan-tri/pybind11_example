@@ -1,0 +1,8 @@
+bazel_dep(name = "rules_python", version = "0.33.2")
+bazel_dep(name = "pybind11_bazel", version = "2.12.0")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+# This version configures the Python version that's compatible with the binding
+python.toolchain(python_version = "3.12")
+use_repo(python, "python_versions")
+

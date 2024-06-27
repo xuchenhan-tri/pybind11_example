@@ -1,0 +1,14 @@
+load("@pybind11_bazel//:build_defs.bzl", "pybind_extension")
+# This configures the python versoin used in the binary foo_py
+load("@python_versions//3.12:defs.bzl", "py_binary")
+
+pybind_extension(
+    name = "foo",
+    srcs = ["foo.cpp"],
+)
+
+py_binary(
+  name = "foo_py",
+  srcs = ["foo_py.py"],
+  data = [":foo"],
+)
